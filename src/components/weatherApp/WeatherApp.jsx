@@ -74,10 +74,21 @@ const WeatherApp = () => {
     setWeatherIcon(iconMapping[weather[0].icon]);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="container">
       <div className="top-bar">
-        <input type="text" className="cityInput" placeholder="Поиск" />
+        <input
+          type="text"
+          className="cityInput"
+          placeholder="Поиск"
+          onKeyDown={handleKeyDown}
+        />
         <div className="search-icon" onClick={handleSearch}>
           <img src={searchIcon} alt="search" />
         </div>
@@ -92,14 +103,14 @@ const WeatherApp = () => {
           <img src={humidityIcon} alt="Humidity" className="icon" />
           <div className="data">
             <div className="humidity-percent">{weatherData.humidity}%</div>
-            <div className="text">Влажность</div>
+            <div className="text">Humidity</div>
           </div>
         </div>
         <div className="element">
           <img src={windIcon} alt="Wind" className="icon" />
           <div className="data">
-            <div className="wind-rate">{weatherData.windSpeed} м/с</div>
-            <div className="text">Ветер</div>
+            <div className="wind-rate">{weatherData.windSpeed} m/sec</div>
+            <div className="text">Wind Speed</div>
           </div>
         </div>
       </div>
