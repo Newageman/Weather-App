@@ -39,6 +39,12 @@ const WeatherApp = () => {
     }
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&units=metric&appid=${apiKey}`;
     const response = await fetch(url);
+
+    if (!response.ok) {
+      alert('City not found. Please enter a valid city name.');
+      return;
+    }
+
     const data = await response.json();
 
     const { main, wind, name, weather } = data;
